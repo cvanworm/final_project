@@ -3,7 +3,11 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <unordered_set>
+#include <algorithm>
 using namespace std;
+
+#ifndef QM_H
+#define QM_H
 
 vector<string> remove_duplicates(const vector<string>& vec) {
     unordered_set<string> seen;
@@ -78,7 +82,14 @@ int one_bit_diff(string a, string b){
 vector<string> find_prime_implicants(vector<string> minterms, vector<string> dontcares){
   vector<string> all_terms;
   all_terms.insert(all_terms.end(), minterms.begin(), minterms.end());
+   
   all_terms.insert(all_terms.end(), dontcares.begin(), dontcares.end());
+ 
+  printf("num terms: %ld\n", all_terms.size());
+   printf("terms:\n");
+  for(int i=0; i<all_terms.size(); i++){
+    printf("%s\n", all_terms[i].c_str());
+  }
 
   vector<vector<implicant>> groups = get_groups(all_terms);
   vector<string> prime_implicants;
@@ -199,3 +210,5 @@ vector<string> findEssentialPrimeImplicants(const vector<vector<bool>>& table, c
 
     return essentialPrimeImplicants;
 }
+
+#endif

@@ -1,10 +1,10 @@
-all: main run
+all: main
 
 main: main.cc
 	g++ -o main main.cc 
 
 run: main
-	./main
+	./main test.pla
 
 clean:
-	rm main
+	rm main solution.pla
